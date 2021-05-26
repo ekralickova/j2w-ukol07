@@ -17,11 +17,11 @@ import java.util.Optional;
 @Controller
 public class VizitkaController {
 
-    private final VizitkaRepository repository;
+    private final VizitkaRepository vizitkaRepository;
 
     @Autowired
-    public VizitkaController(VizitkaRepository repository) {
-        this.repository = repository;
+    public VizitkaController(VizitkaRepository vizitkaRepository) {
+        this.vizitkaRepository = vizitkaRepository;
     }
 
     @InitBinder
@@ -31,14 +31,14 @@ public class VizitkaController {
 
     @GetMapping("/")
     public Object seznam() {
-        Iterable<Vizitka> seznamVizitek = repository.findAll();
+        Iterable<Vizitka> seznamVizitek = vizitkaRepository.findAll();
         return new ModelAndView("seznam")
                 .addObject("seznam", seznamVizitek);
     }
 
     @GetMapping("/{id:[0-9]+}")
     public Object detail(@PathVariable Integer id) {
-        Optional<Vizitka> vizitka = repository.findById(id);
+        Optional<Vizitka> vizitka = vizitkaRepository.findById(id);
         if (vizitka.isPresent()){
             return new ModelAndView("vizitka")
                     .addObject("vizitka", vizitka.get());
@@ -57,13 +57,13 @@ public class VizitkaController {
         if (bindingResult.hasErrors()) {
             return "formular";
         }
-        repository.save(vizitka);
+        vizitkaRepository.save(vizitka);
         return "redirect:/";
     }
 
     @PostMapping(value = "/{id:[0-9]+}", params = "akce=smazat")
     public Object smazat(@PathVariable Integer id) {
-        repository.deleteById(id);
+        vizitkaRepository.deleteById(id);
         return "redirect:/";
     }
 }

@@ -15,34 +15,42 @@
         <div class="row">
             <label for="jmeno">Jméno</label>
             <input type="text" id="jmeno" name="celeJmeno" maxlength="100" required />
+            <div class="error" th:if="${#fields.hasErrors('vizitka.celeJmeno')}" th:errors="${vizitka.celeJmeno}"></div>
         </div>
         <div class="row">
             <label for="firma">Firma</label>
             <input type="text" id="firma" name="firma" maxlength="100" required />
+            <div class="error" th:if="${#fields.hasErrors('vizitka.firma')}" th:errors="${vizitka.firma}"></div>
         </div>
         <div class="row">
             <label for="ulice">Ulice a čísla</label>
             <input type="text" id="ulice" name="ulice" maxlength="100" required />
+            <div class="error" th:if="${#fields.hasErrors('vizitka.ulice')}" th:errors="${vizitka.ulice}"></div>
         </div>
         <div class="row">
             <label for="obec">Obec</label>
             <input type="text" id="obec" name="obec" maxlength="100" required />
+            <div class="error" th:if="${#fields.hasErrors('vizitka.obec')}" th:errors="${vizitka.obec}"></div>
         </div>
         <div class="row">
             <label for="psc">PSČ</label>
             <input type="text" id="psc" name="psc" minlength="5" maxlength="5" pattern="[0-9]{5}" required />
+            <div class="error" th:if="${#fields.hasErrors('vizitka.psc')}" th:errors="${vizitka.psc}"></div>
         </div>
         <div class="row">
             <label for="email">E-mail <small>(volitelný)</small></label>
             <input type="email" id="email" name="email" maxlength="100" />
+            <div class="error" th:if="${#fields.hasErrors('vizitka.email')}" th:errors="${vizitka.email}"></div>
         </div>
         <div class="row">
             <label for="telefon">Telefon <small>(volitelný)</small></label>
             <input type="tel" id="telefon" name="telefon"  maxlength="100"  />
+            <div class="error" th:if="${#fields.hasErrors('vizitka.telefon')}" th:errors="${vizitka.telefon}"></div>
         </div>
         <div class="row">
             <label for="web">Web <small>(volitelný)</small></label>
             <input type="url" id="web" name="web" maxlength="100"  />
+            <div class="error" th:if="${#fields.hasErrors('vizitka.web')}" th:errors="${vizitka.web}"></div>
         </div>
         <div class="form-controls">
             <button type="submit">Odeslat</button>

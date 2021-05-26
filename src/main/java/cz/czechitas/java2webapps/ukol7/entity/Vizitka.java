@@ -134,7 +134,7 @@ public class Vizitka {
         this.obec = obec;
     }
 
-    public String celaAdresa() {
+    public String getCelaAdresa() {
         return String.format("%s, %s, %s", ulice, psc, obec );
     }
 }
